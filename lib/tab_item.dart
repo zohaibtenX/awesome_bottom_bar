@@ -11,5 +11,5 @@ class TabItem<T> {
     this.title,
     this.count,
     this.key,
-  }) : assert(icon is IconData || icon is Widget, 'TabItem only support IconData and Widget');
+  }) : assert(icon is IconData || icon is Widget, || icon is String, 'TabItem only support IconData and Widget');
 }
