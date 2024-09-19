@@ -60,12 +60,12 @@ class SvgViewer extends StatelessWidget {
   final BoxFit fit;
 
   const SvgViewer(
-      {super.key,
+      {
         required this.svgPath,
         this.height,
         this.width,
         this.color,
-        this.fit = BoxFit.contain});
+        this.fit = BoxFit.contain}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
