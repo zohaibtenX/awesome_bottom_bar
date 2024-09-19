@@ -60,7 +60,7 @@ class SvgViewer extends StatelessWidget {
   final BoxFit fit;
 
   const SvgViewer(
-      {
+      {  Key? key,
         required this.svgPath,
         this.height,
         this.width,
