@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../tab_item.dart';
 import '../count_style.dart';
@@ -19,7 +20,11 @@ class BuildIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   Widget icon = (item.icon is Widget) ? item.icon : Icon(
+    Widget icon = (item.icon is String) ?SvgViewer(svgPath: item.icon,
+      color: iconColor,
+      height: iconSize ?? 30,
+      width: iconSize ?? 30,
+    ) : Icon(
       item.icon,
       size: iconSize,
       color: iconColor,
@@ -46,3 +51,32 @@ class BuildIcon extends StatelessWidget {
     return icon;
   }
 }
+
+class SvgViewer extends StatelessWidget {
+  final String svgPath;
+  final double? height;
+  final double? width;
+  final Color? color;
+  final BoxFit fit;
+
+  const SvgViewer(
+      {super.key,
+        required this.svgPath,
+        this.height,
+        this.width,
+        this.color,
+        this.fit = BoxFit.contain});
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(
+      svgPath,
+      key: key,
+      color: color,
+      height: height ?? 30,
+      width: width ?? 30,
+      fit: fit,
+    );
+  }
+}
+
